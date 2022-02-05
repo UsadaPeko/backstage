@@ -35,10 +35,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
+          
+      - name: Test
         working-directory: ./backstage
-      - run: yarn install --frozen-lockfile
-      - run: yarn tsc
-      - run: yarn build
+        run: |
+          yarn install --frozen-lockfile
+          yarn tsc
+          yarn build  
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
